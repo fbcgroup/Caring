@@ -5,403 +5,587 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio Caring — Distribuzione Team</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Inter',Arial,sans-serif;font-size:13px;color:#0f172a;background:#e8eaf0;min-height:100vh;padding:32px 16px;}
-  .page{max-width:980px;margin:0 auto;}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',Arial,sans-serif;font-size:13px;color:#0f172a;background:#eef0f5;padding:32px 16px;}
+.page{max-width:1000px;margin:0 auto;}
+.header{background:#0f172a;color:#fff;padding:36px 44px 32px;border-radius:6px 6px 0 0;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(59,130,246,0.07);}
+.header::after{content:'';position:absolute;bottom:-60px;right:120px;width:200px;height:200px;border-radius:50%;background:rgba(99,102,241,0.05);}
+.header-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;position:relative;}
+.header-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#475569;font-weight:600;margin-bottom:10px;}
+.header h1{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1.2;color:#fff;}
+.header-sub{font-size:12px;color:#64748b;margin-top:6px;font-weight:400;line-height:1.6;}
+.header-accent{width:36px;height:3px;background:linear-gradient(90deg,#3b82f6,#6366f1);margin-top:16px;border-radius:2px;}
+.header-right{text-align:right;}
+.header-date-label{font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:.12em;font-weight:500;}
+.header-date-val{font-size:15px;font-weight:700;color:#e2e8f0;margin-top:3px;letter-spacing:-.01em;}
+.header-badge{display:inline-block;background:rgba(59,130,246,0.15);color:#93c5fd;font-size:10px;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(59,130,246,0.2);}
+.body{background:#fff;padding:36px 44px;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;}
+.kpi-row{display:flex;gap:1px;margin-bottom:28px;background:#e2e8f0;border-radius:6px;overflow:hidden;}
+.kpi-card{flex:1;background:#fff;padding:22px 20px;position:relative;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kpi-luca::before{background:linear-gradient(90deg,#3b82f6,#60a5fa);}
+.kpi-valentina::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa);}
+.kpi-miriam::before{background:linear-gradient(90deg,#10b981,#34d399);}
+.kpi-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:6px;}
+.kpi-name{font-size:17px;font-weight:800;letter-spacing:-.02em;color:#0f172a;margin-bottom:2px;}
+.kpi-hours{font-size:11px;color:#94a3b8;margin-bottom:14px;font-weight:400;}
+.kpi-metrics{display:flex;gap:16px;}
+.kpi-metric-val{font-size:24px;font-weight:800;letter-spacing:-.03em;color:#0f172a;line-height:1;}
+.kpi-metric-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;margin-top:3px;font-weight:500;}
+.kpi-divider{width:1px;background:#f1f5f9;align-self:stretch;}
+.kpi-status{margin-top:12px;}
+.kpi-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.04em;}
+.pill-ok{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;}
+.pill-over{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+.pill-under{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
 
-  /* HEADER */
-  .header{background:#0f172a;color:#fff;padding:40px 48px 36px;border-radius:4px 4px 0 0;position:relative;overflow:hidden;}
-  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.03);}
-  .header::after{content:'';position:absolute;bottom:-80px;right:80px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.025);}
-  .header-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;}
-  .header-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#64748b;font-weight:500;margin-bottom:10px;}
-  .header h1{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.2;}
-  .header-sub{font-size:13px;color:#94a3b8;margin-top:6px;font-weight:400;}
-  .header-meta{text-align:right;}
-  .header-date{font-size:11px;color:#475569;font-weight:500;letter-spacing:.04em;}
-  .header-date span{display:block;font-size:18px;font-weight:700;color:#fff;margin-top:2px;letter-spacing:-.01em;}
-  .divider-line{width:40px;height:2px;background:#3b82f6;margin-top:20px;}
+/* USER BAR */
+.user-bar{display:flex;gap:10px;align-items:center;padding:13px 18px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;margin-bottom:14px;flex-wrap:wrap;}
+.user-bar-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#0369a1;font-weight:700;white-space:nowrap;}
+.user-input{padding:6px 12px;border-radius:4px;border:1px solid #7dd3fc;font-size:12px;font-family:inherit;color:#0f172a;background:#fff;flex:1;min-width:160px;max-width:240px;}
+.user-input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+.user-active{font-size:12px;color:#0369a1;font-weight:600;display:none;align-items:center;gap:6px;}
+.user-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;}
+.user-change-btn{font-size:10px;color:#64748b;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;}
 
-  /* BODY */
-  .body{background:#fff;padding:40px 48px;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;}
+/* COLLAB BAR */
+.collab-bar{display:flex;gap:8px;align-items:center;padding:11px 18px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;margin-bottom:20px;flex-wrap:wrap;}
+.collab-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#64748b;font-weight:700;white-space:nowrap;margin-right:4px;}
+.btn{padding:8px 16px;border-radius:4px;border:none;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-family:inherit;transition:all .15s;white-space:nowrap;}
+.btn-dark{background:#0f172a;color:#fff;}
+.btn-dark:hover{background:#1e293b;}
+.btn-outline{background:#fff;color:#475569;border:1px solid #e2e8f0;}
+.btn-outline:hover{border-color:#94a3b8;color:#0f172a;}
+.btn-reset{background:#fff;color:#ef4444;border:1px solid #fecaca;}
+.btn-reset:hover{background:#fef2f2;}
+.btn-download{background:#0ea5e9;color:#fff;}
+.btn-download:hover{background:#0284c7;}
+.btn-load{background:#fff;color:#475569;border:1px solid #e2e8f0;}
+.btn-load:hover{border-color:#94a3b8;}
+.changes-lbl{font-size:11px;color:#f59e0b;font-weight:600;letter-spacing:.02em;}
 
-  /* STATS */
-  .stats-row{display:flex;gap:2px;margin-bottom:40px;}
-  .stat-card{flex:1;padding:24px 20px;background:#f8fafc;border-top:3px solid;position:relative;transition:box-shadow .2s;}
-  .stat-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
-  .stat-card.luca{border-color:#0f172a;}
-  .stat-card.valentina{border-color:#64748b;}
-  .stat-card.miriam{border-color:#94a3b8;}
-  .stat-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:12px;}
-  .stat-name{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#0f172a;margin-bottom:2px;}
-  .stat-hours{font-size:11px;color:#64748b;font-weight:500;margin-bottom:16px;}
-  .stat-numbers{display:flex;gap:20px;}
-  .stat-num{text-align:center;}
-  .stat-num-val{font-size:22px;font-weight:700;color:#0f172a;line-height:1;}
-  .stat-num-lbl{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
-  .stat-badge{display:inline-block;padding:3px 10px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:14px;}
-  .badge-ok{background:#f0fdf4;color:#166534;}
-  .badge-over{background:#fef2f2;color:#991b1b;}
-  .badge-under{background:#fffbeb;color:#854d0e;}
+.toolbar{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+.search-wrap{position:relative;flex:1;min-width:200px;}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#94a3b8;pointer-events:none;}
+.search-box{width:100%;padding:8px 12px 8px 34px;border-radius:4px;border:1px solid #e2e8f0;font-size:12px;font-family:inherit;color:#0f172a;background:#f8fafc;transition:all .2s;}
+.search-box:focus{outline:none;border-color:#3b82f6;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.08);}
+.filter-bar{display:flex;gap:6px;margin-bottom:20px;align-items:center;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #f1f5f9;}
+.filter-group-label{font-size:9px;color:#94a3b8;text-transform:uppercase;letter-spacing:.14em;font-weight:600;margin-right:2px;}
+.f-btn{padding:4px 12px;border-radius:20px;border:1px solid #e2e8f0;cursor:pointer;font-size:11px;font-weight:500;background:#fff;color:#64748b;font-family:inherit;transition:all .15s;}
+.f-btn:hover{border-color:#94a3b8;color:#0f172a;}
+.f-btn.act-all{background:#0f172a;border-color:#0f172a;color:#fff;font-weight:600;}
+.f-btn.act-luca{background:#eff6ff;border-color:#3b82f6;color:#1d4ed8;font-weight:600;}
+.f-btn.act-valentina{background:#f5f3ff;border-color:#8b5cf6;color:#6d28d9;font-weight:600;}
+.f-btn.act-miriam{background:#f0fdf4;border-color:#10b981;color:#047857;font-weight:600;}
+.f-btn.act-v1{background:#f0fdf4;border-color:#10b981;color:#047857;font-weight:600;}
+.f-btn.act-v2{background:#fffbeb;border-color:#f59e0b;color:#92400e;font-weight:600;}
+.f-btn.act-v3{background:#fef2f2;border-color:#ef4444;color:#991b1b;font-weight:600;}
+.f-btn.act-changed{background:#fffbeb;border-color:#f59e0b;color:#92400e;font-weight:600;}
+.sep{width:1px;height:16px;background:#e2e8f0;margin:0 2px;}
+.table-wrap{border:1px solid #f1f5f9;border-radius:6px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead{background:#0f172a;}
+th{color:#64748b;text-align:left;padding:10px 14px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;}
+td{padding:9px 14px;border-bottom:1px solid #f8fafc;color:#334155;vertical-align:middle;}
+tr.dr:last-child td{border-bottom:none;}
+tr.dr:hover td{background:#f8fafc;}
+tr.changed td{background:#fffbeb !important;}
+tr.changed:hover td{background:#fef9c3 !important;}
+.client-name{font-weight:500;color:#0f172a;font-size:12px;}
+.mod-pill{display:inline-block;background:#f59e0b;color:#fff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;}
+.who-pill{display:inline-block;background:#dbeafe;color:#1d4ed8;font-size:9px;font-weight:600;padding:1px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;}
+.bv1{background:#f0fdf4;color:#15803d;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:600;border:1px solid #bbf7d0;}
+.bv2{background:#fffbeb;color:#d97706;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:600;border:1px solid #fde68a;}
+.bv3{background:#fef2f2;color:#dc2626;padding:3px 9px;border-radius:10px;font-size:10px;font-weight:600;border:1px solid #fecaca;}
+.assign-sel{padding:4px 10px;border-radius:4px;border:1px solid #e2e8f0;font-size:11px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit;color:#0f172a;transition:border .15s;}
+.assign-sel:hover,.assign-sel:focus{outline:none;border-color:#3b82f6;}
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#f8fafc;border-top:1px solid #f1f5f9;flex-wrap:wrap;gap:8px;}
+.pag-info{font-size:11px;color:#94a3b8;}
+.pag-controls{display:flex;align-items:center;gap:4px;}
+.pag-btn{width:30px;height:30px;border-radius:4px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:12px;font-family:inherit;color:#475569;font-weight:500;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.pag-btn:hover:not(:disabled){border-color:#3b82f6;color:#3b82f6;}
+.pag-btn:disabled{opacity:.35;cursor:default;}
+.pag-btn.active{background:#0f172a;border-color:#0f172a;color:#fff;font-weight:700;}
+.pag-size{padding:4px 8px;border-radius:4px;border:1px solid #e2e8f0;background:#fff;font-size:11px;font-family:inherit;color:#475569;cursor:pointer;}
 
-  /* TOOLBAR */
-  .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #f1f5f9;}
-  .search-wrap{position:relative;flex:1;min-width:200px;}
-  .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4;}
-  .search-box{width:100%;padding:9px 12px 9px 36px;border-radius:2px;border:1px solid #e2e8f0;font-size:12px;font-family:inherit;color:#0f172a;background:#f8fafc;transition:border .2s;}
-  .search-box:focus{outline:none;border-color:#0f172a;background:#fff;}
-  .btn{padding:8px 18px;border-radius:2px;border:none;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:inherit;transition:all .15s;}
-  .btn-dark{background:#0f172a;color:#fff;}
-  .btn-dark:hover{background:#1e293b;}
-  .btn-outline{background:#fff;color:#0f172a;border:1px solid #e2e8f0;}
-  .btn-outline:hover{border-color:#0f172a;}
-  .btn-ghost{background:transparent;color:#ef4444;border:1px solid #fecaca;font-size:11px;}
-  .btn-ghost:hover{background:#fef2f2;}
-  .changes-lbl{font-size:11px;color:#f59e0b;font-weight:600;letter-spacing:.04em;}
+/* LOG */
+.log-section{margin-top:28px;}
+.log-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.log-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#64748b;}
+.log-list{border:1px solid #f1f5f9;border-radius:6px;overflow:hidden;max-height:180px;overflow-y:auto;}
+.log-empty{padding:14px 16px;font-size:12px;color:#94a3b8;font-style:italic;}
+.log-row{display:flex;gap:12px;align-items:flex-start;padding:9px 14px;border-bottom:1px solid #f8fafc;font-size:11px;}
+.log-row:last-child{border-bottom:none;}
+.log-row.log-system{background:#f8fafc;}
+.log-time{color:#94a3b8;white-space:nowrap;flex-shrink:0;}
+.log-user{color:#0369a1;font-weight:700;white-space:nowrap;flex-shrink:0;min-width:60px;}
+.log-text{color:#475569;line-height:1.4;}
 
-  /* FILTER BAR */
-  .filter-bar{display:flex;gap:6px;margin-bottom:24px;align-items:center;flex-wrap:wrap;}
-  .filter-section-lbl{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-right:4px;}
-  .filter-btn{padding:5px 14px;border-radius:2px;border:1px solid #e2e8f0;cursor:pointer;font-size:11px;font-weight:500;background:#fff;color:#64748b;font-family:inherit;transition:all .15s;}
-  .filter-btn:hover{border-color:#0f172a;color:#0f172a;}
-  .filter-btn.active{background:#0f172a;border-color:#0f172a;color:#fff;font-weight:600;}
-  .filter-btn.active-v1{background:#166534;border-color:#166534;color:#fff;}
-  .filter-btn.active-v2{background:#854d0e;border-color:#854d0e;color:#fff;}
-  .filter-btn.active-v3{background:#991b1b;border-color:#991b1b;color:#fff;}
-  .sep{width:1px;height:20px;background:#e2e8f0;margin:0 4px;}
+.note{margin-top:28px;display:flex;gap:14px;padding:18px 20px;background:#f8fafc;border-radius:6px;border:1px solid #f1f5f9;}
+.note-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.note-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#64748b;margin-bottom:5px;}
+.note p{font-size:12px;color:#64748b;line-height:1.7;}
 
-  /* TABLE */
-  .table-wrap{border:1px solid #f1f5f9;border-radius:2px;overflow:hidden;}
-  table{width:100%;border-collapse:collapse;font-size:12px;}
-  thead{background:#0f172a;}
-  th{color:#94a3b8;text-align:left;padding:10px 14px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
-  td{padding:10px 14px;border-bottom:1px solid #f8fafc;color:#1e293b;vertical-align:middle;}
-  tr.data-row:last-child td{border-bottom:none;}
-  tr.data-row:hover td{background:#f8fafc;}
-  tr.hidden-row{display:none;}
-  tr.changed-row td{background:#fffbeb !important;}
-  tr.changed-row:hover td{background:#fef9c3 !important;}
-  .client-name{font-weight:500;color:#0f172a;}
-  .changed-pill{display:inline-block;background:#f59e0b;color:#fff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:1px;margin-left:8px;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(3px);}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:8px;padding:28px 32px;max-width:440px;width:90%;box-shadow:0 24px 64px rgba(0,0,0,.2);}
+.modal-icon{width:44px;height:44px;background:#fef2f2;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
+.modal-icon.blue{background:#eff6ff;}
+.modal h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;}
+.modal p{font-size:13px;color:#64748b;line-height:1.6;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;}
 
-  .badge-v1{background:#f0fdf4;color:#166534;padding:3px 10px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:.06em;}
-  .badge-v2{background:#fffbeb;color:#854d0e;padding:3px 10px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:.06em;}
-  .badge-v3{background:#fef2f2;color:#991b1b;padding:3px 10px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:.06em;}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.25);z-index:200;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.green{background:#15803d;}
+.toast.red{background:#dc2626;}
 
-  .assign-select{padding:5px 10px;border-radius:2px;border:1px solid #e2e8f0;font-size:11px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit;color:#0f172a;transition:border .15s;}
-  .assign-select:focus{outline:none;border-color:#0f172a;}
-  .assign-select:hover{border-color:#0f172a;}
+.footer{background:#0f172a;padding:18px 44px;border-radius:0 0 6px 6px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-l{font-size:11px;color:#334155;font-weight:500;}
+.footer-r{font-size:10px;color:#1e293b;text-transform:uppercase;letter-spacing:.1em;font-weight:600;}
 
-  /* EXPORT */
-  .export-area{display:none;margin-top:16px;padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:2px;}
-  .export-area textarea{width:100%;height:140px;font-size:11px;font-family:'Courier New',monospace;border:1px solid #e2e8f0;border-radius:2px;padding:10px;resize:vertical;color:#475569;}
-  .export-area textarea:focus{outline:none;border-color:#0f172a;}
-
-  /* NOTE */
-  .note{margin-top:32px;padding:20px 24px;border-left:3px solid #e2e8f0;background:#f8fafc;}
-  .note-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#64748b;margin-bottom:8px;}
-  .note p{font-size:12px;color:#64748b;line-height:1.7;}
-
-  /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
-  .modal-overlay.active{display:flex;}
-  .modal{background:#fff;border-radius:2px;padding:32px;max-width:440px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
-  .modal-icon{width:40px;height:40px;background:#fef2f2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:18px;}
-  .modal h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;}
-  .modal p{font-size:13px;color:#64748b;line-height:1.6;}
-  .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;}
-
-  /* FOOTER */
-  .footer{background:#0f172a;padding:20px 48px;border-radius:0 0 4px 4px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-  .footer-left{font-size:11px;color:#475569;font-weight:500;letter-spacing:.04em;}
-  .footer-right{font-size:10px;color:#334155;text-transform:uppercase;letter-spacing:.1em;}
-
-  /* RESULTS COUNT */
-  .results-count{font-size:11px;color:#94a3b8;padding:8px 14px;border-bottom:1px solid #f1f5f9;background:#f8fafc;}
-
-  @media(max-width:640px){
-    .header,.body{padding:28px 24px;}
-    .stats-row{flex-direction:column;gap:2px;}
-    .footer{padding:16px 24px;}
-  }
+@media(max-width:640px){
+  .header,.body{padding:24px 20px;}
+  .kpi-row{flex-direction:column;gap:1px;}
+  .footer{padding:14px 20px;}
+}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-top">
-      <div>
-        <div class="header-label">FBC Italia · Team Caring</div>
-        <h1>Portfolio Client Distribution</h1>
-        <div class="header-sub">Ripartizione bilanciata per carico ponderato · Capacità 8h / 8h / 6h</div>
-        <div class="divider-line"></div>
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">FBC Italia · Direzione Operations</div>
+      <h1>Portfolio Caring<br>Team Distribution</h1>
+      <div class="header-sub">Ripartizione bilanciata per carico ponderato · Capacità 8h / 8h / 6h</div>
+      <div class="header-accent"></div>
+    </div>
+    <div class="header-right">
+      <div class="header-date-label">Data documento</div>
+      <div class="header-date-val" id="gen-date">—</div>
+      <div class="header-badge">Uso Interno</div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="kpi-row">
+    <div class="kpi-card kpi-luca">
+      <div class="kpi-label">Responsabile</div><div class="kpi-name">Luca</div><div class="kpi-hours">8 ore · giorno</div>
+      <div class="kpi-metrics">
+        <div><div class="kpi-metric-val" id="cnt-luca">—</div><div class="kpi-metric-lbl">Clienti</div></div>
+        <div class="kpi-divider"></div>
+        <div><div class="kpi-metric-val" id="w-luca">—</div><div class="kpi-metric-lbl">Peso</div></div>
       </div>
-      <div class="header-meta">
-        <div class="header-date">Documento generato il<span id="gen-date"></span></div>
+      <div class="kpi-status" id="badge-luca"></div>
+    </div>
+    <div class="kpi-card kpi-valentina">
+      <div class="kpi-label">Responsabile</div><div class="kpi-name">Valentina</div><div class="kpi-hours">8 ore · giorno</div>
+      <div class="kpi-metrics">
+        <div><div class="kpi-metric-val" id="cnt-valentina">—</div><div class="kpi-metric-lbl">Clienti</div></div>
+        <div class="kpi-divider"></div>
+        <div><div class="kpi-metric-val" id="w-valentina">—</div><div class="kpi-metric-lbl">Peso</div></div>
       </div>
+      <div class="kpi-status" id="badge-valentina"></div>
+    </div>
+    <div class="kpi-card kpi-miriam">
+      <div class="kpi-label">Responsabile</div><div class="kpi-name">Miriam</div><div class="kpi-hours">6 ore · giorno</div>
+      <div class="kpi-metrics">
+        <div><div class="kpi-metric-val" id="cnt-miriam">—</div><div class="kpi-metric-lbl">Clienti</div></div>
+        <div class="kpi-divider"></div>
+        <div><div class="kpi-metric-val" id="w-miriam">—</div><div class="kpi-metric-lbl">Peso</div></div>
+      </div>
+      <div class="kpi-status" id="badge-miriam"></div>
     </div>
   </div>
 
-  <!-- BODY -->
-  <div class="body">
-
-    <!-- STATS -->
-    <div class="stats-row">
-      <div class="stat-card luca">
-        <div class="stat-label">Responsabile</div>
-        <div class="stat-name">Luca</div>
-        <div class="stat-hours">8 ore / giorno</div>
-        <div class="stat-numbers">
-          <div class="stat-num"><div class="stat-num-val" id="cnt-luca">—</div><div class="stat-num-lbl">Clienti</div></div>
-          <div class="stat-num"><div class="stat-num-val" id="w-luca">—</div><div class="stat-num-lbl">Peso</div></div>
-        </div>
-        <div id="badge-luca"></div>
-      </div>
-      <div class="stat-card valentina">
-        <div class="stat-label">Responsabile</div>
-        <div class="stat-name">Valentina</div>
-        <div class="stat-hours">8 ore / giorno</div>
-        <div class="stat-numbers">
-          <div class="stat-num"><div class="stat-num-val" id="cnt-valentina">—</div><div class="stat-num-lbl">Clienti</div></div>
-          <div class="stat-num"><div class="stat-num-val" id="w-valentina">—</div><div class="stat-num-lbl">Peso</div></div>
-        </div>
-        <div id="badge-valentina"></div>
-      </div>
-      <div class="stat-card miriam">
-        <div class="stat-label">Responsabile</div>
-        <div class="stat-name">Miriam</div>
-        <div class="stat-hours">6 ore / giorno</div>
-        <div class="stat-numbers">
-          <div class="stat-num"><div class="stat-num-val" id="cnt-miriam">—</div><div class="stat-num-lbl">Clienti</div></div>
-          <div class="stat-num"><div class="stat-num-val" id="w-miriam">—</div><div class="stat-num-lbl">Peso</div></div>
-        </div>
-        <div id="badge-miriam"></div>
-      </div>
-    </div>
-
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-      <div class="search-wrap">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="search-box" id="search" placeholder="Cerca cliente..." oninput="applyFilters()">
-      </div>
-      <button class="btn btn-dark" onclick="toggleExport()">Esporta CSV</button>
-      <button class="btn btn-ghost" id="btn-reset" style="display:none" onclick="confirmReset()">Ripristina originale</button>
-      <span class="changes-lbl" id="changes-count" style="display:none"></span>
-    </div>
-
-    <!-- FILTER BAR -->
-    <div class="filter-bar">
-      <span class="filter-section-lbl">Persona</span>
-      <button class="filter-btn active" id="f-all" onclick="setFilter('all')">Tutti</button>
-      <button class="filter-btn" id="f-luca" onclick="setFilter('Luca')">Luca</button>
-      <button class="filter-btn" id="f-valentina" onclick="setFilter('Valentina')">Valentina</button>
-      <button class="filter-btn" id="f-miriam" onclick="setFilter('Miriam')">Miriam</button>
-      <div class="sep"></div>
-      <span class="filter-section-lbl">Valutazione</span>
-      <button class="filter-btn" id="f-v1" onclick="setValFilter('1')">Livello 1</button>
-      <button class="filter-btn" id="f-v2" onclick="setValFilter('2')">Livello 2</button>
-      <button class="filter-btn" id="f-v3" onclick="setValFilter('3')">Livello 3</button>
-      <div class="sep"></div>
-      <button class="filter-btn" id="f-changed" onclick="setFilter('changed')">Modificati</button>
-    </div>
-
-    <!-- TABLE -->
-    <div class="table-wrap">
-      <table id="main-table">
-        <thead>
-          <tr>
-            <th style="width:36px">#</th>
-            <th>Ragione Sociale</th>
-            <th style="width:100px">Valutazione</th>
-            <th style="width:160px">Responsabile</th>
-          </tr>
-        </thead>
-        <tbody id="main-tbody"></tbody>
-      </table>
-      <div class="results-count" id="results-count"></div>
-    </div>
-
-    <!-- EXPORT -->
-    <div class="export-area" id="export-area">
-      <textarea id="csv-out" readonly></textarea>
-      <button class="btn btn-outline" style="margin-top:10px" onclick="copyCSV()">Copia negli appunti</button>
-    </div>
-
-    <!-- NOTE -->
-    <div class="note">
-      <div class="note-title">Note metodologiche</div>
-      <p>La distribuzione è bilanciata in proporzione alla capacità oraria (8h / 8h / 6h) applicando un peso ponderato per valutazione (1 = standard, 2 = medio, 3 = complesso). Vincoli fissi applicati: <strong>Reale Immobili S.P.A → Luca</strong> &nbsp;·&nbsp; <strong>Gruppo Synlab (×6) → Valentina</strong>. I clienti precedentemente assegnati ad altre risorse sono stati redistribuiti. Le righe modificate manualmente sono evidenziate.</p>
+  <!-- USER BAR -->
+  <div class="user-bar">
+    <span class="user-bar-label">👤 Utente attivo</span>
+    <input class="user-input" id="user-name-input" placeholder="Inserisci il tuo nome prima di modificare..." maxlength="40" oninput="onUserTyping()" onkeydown="onUserKey(event)">
+    <div class="user-active" id="user-active-display">
+      <span class="user-dot"></span>
+      <span id="user-active-name" style="color:#0369a1;font-weight:700;font-size:12px;"></span>
+      <button class="user-change-btn" onclick="resetUser()">cambia</button>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-left">FBC Italia &nbsp;·&nbsp; Team Caring &nbsp;·&nbsp; Distribuzione Portafoglio <span id="footer-date"></span></div>
-    <div class="footer-right">Uso interno riservato</div>
+  <!-- COLLAB BAR -->
+  <div class="collab-bar">
+    <span class="collab-label">💾 Collaborazione</span>
+    <button class="btn btn-download" onclick="downloadSession()">⬇ Scarica sessione</button>
+    <button class="btn btn-load" onclick="document.getElementById('file-load-input').click()">⬆ Carica sessione</button>
+    <input type="file" id="file-load-input" accept=".json" style="display:none" onchange="loadSession(event)">
+    <button class="btn btn-reset" id="btn-reset" style="display:none" onclick="confirmReset()">↩ Ripristina</button>
+    <span class="changes-lbl" id="changes-count" style="display:none"></span>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input class="search-box" id="search" placeholder="Cerca ragione sociale..." oninput="onSearch()">
+    </div>
+    <select class="pag-size" id="page-size-top" onchange="setPageSize(this.value)">
+      <option value="25">25 per pagina</option>
+      <option value="50" selected>50 per pagina</option>
+      <option value="100">100 per pagina</option>
+      <option value="9999">Tutti</option>
+    </select>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-group-label">Persona</span>
+    <button class="f-btn act-all" id="f-all" onclick="setFilter('all')">Tutti</button>
+    <button class="f-btn" id="f-luca" onclick="setFilter('Luca')">Luca</button>
+    <button class="f-btn" id="f-valentina" onclick="setFilter('Valentina')">Valentina</button>
+    <button class="f-btn" id="f-miriam" onclick="setFilter('Miriam')">Miriam</button>
+    <div class="sep"></div>
+    <span class="filter-group-label">Valutazione</span>
+    <button class="f-btn" id="f-v1" onclick="setValFilter('1')">● Livello 1</button>
+    <button class="f-btn" id="f-v2" onclick="setValFilter('2')">● Livello 2</button>
+    <button class="f-btn" id="f-v3" onclick="setValFilter('3')">● Livello 3</button>
+    <div class="sep"></div>
+    <button class="f-btn" id="f-changed" onclick="setFilter('changed')">✎ Modificati</button>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:42px">#</th>
+          <th>Ragione Sociale</th>
+          <th style="width:110px">Valutazione</th>
+          <th style="width:160px">Responsabile</th>
+        </tr>
+      </thead>
+      <tbody id="main-tbody"></tbody>
+    </table>
+    <div class="pagination" id="pag-bar">
+      <div class="pag-info" id="pag-info"></div>
+      <div class="pag-controls" id="pag-controls"></div>
+    </div>
+  </div>
+
+  <!-- CHANGE LOG -->
+  <div class="log-section">
+    <div class="log-header">
+      <div class="log-title">📋 Registro modifiche</div>
+      <button class="btn btn-outline" style="font-size:10px;padding:4px 12px" onclick="clearLog()">Svuota</button>
+    </div>
+    <div class="log-list" id="log-list">
+      <div class="log-empty" id="log-empty">Nessuna modifica registrata in questa sessione.</div>
+    </div>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note">
+    <div class="note-icon">ℹ</div>
+    <div class="note-body">
+      <div class="note-title">Note metodologiche &amp; Istruzioni collaborazione</div>
+      <p>Distribuzione bilanciata in proporzione alla capacità oraria (8h / 8h / 6h) con peso ponderato per valutazione complessità cliente (1 = standard · 2 = medio · 3 = complesso). <strong>Vincoli fissi:</strong> Reale Immobili S.P.A → Luca &nbsp;·&nbsp; Gruppo Synlab (×6) → Valentina. Le righe modificate sono evidenziate in giallo con il nome dell'utente.<br><br>
+      <strong>Flusso collaborativo:</strong> 1) Inserisci il tuo nome · 2) Modifica le assegnazioni · 3) Clicca <em>Scarica sessione</em> per salvare un file JSON · 4) Condividi il file con il collega · 5) Il collega carica il file con <em>Carica sessione</em> per unire le modifiche.</p>
+    </div>
   </div>
 
 </div>
 
-<!-- MODAL -->
+<div class="footer">
+  <div class="footer-l">FBC Italia &nbsp;·&nbsp; Team Caring &nbsp;·&nbsp; <span id="footer-year"></span></div>
+  <div class="footer-r">Riservato · Uso Interno · Rel 2.0</div>
+</div>
+</div>
+
+<!-- MODAL RESET -->
 <div class="modal-overlay" id="modal-reset">
   <div class="modal">
     <div class="modal-icon">↩</div>
     <h3>Ripristina distribuzione originale</h3>
-    <p>Tutte le modifiche manuali verranno annullate e la distribuzione tornerà al bilanciamento automatico. L'operazione non è reversibile.</p>
+    <p>Tutte le modifiche manuali verranno annullate e la distribuzione tornerà al bilanciamento automatico. Il log rimarrà. L'operazione non è reversibile.</p>
     <div class="modal-actions">
-      <button class="btn btn-outline" onclick="closeModal()">Annulla</button>
+      <button class="btn btn-outline" onclick="closeModal('modal-reset')">Annulla</button>
       <button class="btn btn-dark" onclick="doReset()">Conferma ripristino</button>
     </div>
   </div>
 </div>
 
+<!-- MODAL LOAD -->
+<div class="modal-overlay" id="modal-load">
+  <div class="modal">
+    <div class="modal-icon blue">⬆</div>
+    <h3>Carica sessione collaborativa</h3>
+    <p id="modal-load-desc">Stai per caricare una sessione salvata. Le assegnazioni verranno aggiornate e il log unito.</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="cancelLoad()">Annulla</button>
+      <button class="btn btn-dark" onclick="confirmLoad()">Carica e unisci</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
 const now=new Date();
 document.getElementById("gen-date").textContent=now.toLocaleDateString("it-IT",{day:"2-digit",month:"long",year:"numeric"});
-document.getElementById("footer-date").textContent=now.getFullYear();
+document.getElementById("footer-year").textContent=now.getFullYear();
 
 const RAW=[["2K4 Srl","1"],["3F S.R.L.","2"],["4 Mktg - For Marketing S.R.L.","1"],["4Ward S.R.L.","1"],["A.B. Padel S.S.D.R.L.","1"],["A.L.E. Srl","1"],["Abc Milano S.R.L.","1"],["Abc Srl","1"],["Acqui Terme Fitness S.R.L.","2"],["Acton Technologies S.R.L","1"],["Agenzia Yes!Spa","1"],["Agf S.R.L","1"],["Agiometrix Srl","1"],["Agrate Fitness Srl","2"],["Agrati Group S.P.A.","1"],["Agrati-Fsp S.R.L.","1"],["Akita Film S.R.L.","1"],["Alan S.R.L.","1"],["Alessandro Corona","2"],["Alfa Ossidazione Socio Unico Srl","3"],["Algorab Srl","1"],["Alika S.R.L.","2"],["All Thermoplast S.R.L.","1"],["Alles Fisch & C. S.R.L.","1"],["Alpaplastic Srl","1"],["Alpris Srl","1"],["Alserio3 S.R.L.","1"],["Altair Real Estate Srl","1"],["Altrome Ssd A.R.L.","1"],["Amadei Federico","1"],["Amadei Franco S.R.L","1"],["Amarc Srl","1"],["Analisi Control S.R.L","3"],["Ansett Aviation Italy Spa","1"],["Antec Srl","1"],["Aqua-Village S.R.L.","2"],["Ar.Te. Srls","1"],["Arcore Fitness S.R.L.","2"],["Ardea S.R.L.","1"],["Arezzo Fitness Srl","2"],["Argentia Prodotti S.R.L.","1"],["Argentia Ristorazione Srl","1"],["Ariccia Fitness Srl","2"],["Art Family Srl","1"],["Artigiani Della Pinsa S.R.L.","2"],["Asd Centro Schuster","1"],["Aslam Cooperativa Sociale","3"],["Aspresso Roma S.R.L.","1"],["Associazione Mihi Club Parruchieri Italiani","1"],["Astoria Hotel Srl","1"],["Asystel-Bdf S.P.A.","3"],["Atelier Vercelli S.R.L.","1"],["Atelier Xxii Marzo S.R.L.","1"],["Atiu S.R.L.","1"],["Atlante Srl","3"],["Attiva S.C.Ar.L.","2"],["Aurora Srl","1"],["Autobi S.R.L.","1"],["Autoscuola Moderna S.A.S.","1"],["Avimecc S.P.A","1"],["Avion S.R.L.","1"],["Avisp Societa' Agricola","1"],["Az.Agr. Il Poggiarello S.S","2"],["Azienda Agricola Caldera Marcello","1"],["Azienda Agricola Dominio Di Bagnoli","1"],["Azienda Agricola Piccagallo","2"],["Azienda Avicola Blanco","1"],["B & B Automation Srl","1"],["B&B Hair Store Srl","1"],["Bagattini Srl","1"],["Bar Bel S.R.L.","1"],["Barristo Srl","3"],["Bea S.R.L","1"],["Bell Constructions Srl","1"],["Bell Contractor Srl","1"],["Bell Events Srl","1"],["Bell Facilities S.R.L.","1"],["Bell Flex S.R.L","1"],["Bell Group S.R.L.","1"],["Bell Property Solutions Srl","1"],["Bell Real Estate Investments S.R.L.","1"],["Bell Sanify S.R.L.","1"],["Belli Ugo Alessandro","2"],["Belvedere Ssdl Arl","2"],["Berri Srl","2"],["Berri Tractors S.R.L","2"],["Betafarma S.P.A","1"],["Biauto Club S.R.L.","1"],["Biauto Group Spa","1"],["Biauto S.R.L.","1"],["Biemme Adesivi S.R.L.","1"],["Bio-Optica Milano S.P.A","1"],["Biofarma S.R.L.","1"],["Biraghi Srl","1"],["Blk Cor S.R.L.","1"],["Blue City Srl","1"],["Blulink Srl","1"],["Bmw Italia S.P.A.","1"],["Bonetti Giacomo Giacinto","1"],["Boxlite Packaging S.R.L.","1"],["Bramati S.R.L.","1"],["Bre Com S.R.L.","1"],["Bre S.R.L.","1"],["Brec Scarl","1"],["Brex S.R.L.","1"],["Bucap Spa","1"],["Building Re","1"],["Buongiorno Paolo Bartolomeo","1"],["Buongiorno Paolo Bartolomeo Int.6 Gas","1"],["Busnago Fitness Srl","2"],["C.F. Serigrafia Srl","1"],["C.M.C. Italia S.R.L.","1"],["C.M.P. S.R.L.","1"],["C.U.M. Gears S.R.L.","1"],["C.U.M. S.R.L.","1"],["C.V.B. S.R.L.","1"],["Cafazzo S.R.L.","1"],["Caldera Carlo","1"],["Caldera Gabriella","1"],["Calzificio Roby Roby","1"],["Camanini Gabriele","1"],["Camit S.R.L","2"],["Camplus International S.R.L.","3"],["Cantine Quattro Valli S.R.L","1"],["Carantini Srl","1"],["Carni Botalla 1876 Srl","1"],["Casa Di Ospitalita' E Cura S. Vincenzo","1"],["Cascina Grangia S.R.L","1"],["Ccf Chiusure Di Sicurezza Srl","1"],["Ccfo Malta Icom S.R.L.","1"],["Ceoldo Infissi","1"],["Cernusco Fitness Srl","2"],["Certaldo Fitness Srl","2"],["Cervo S.R.L.","1"],["Cesena Fitness Srl","2"],["Cff Srl","1"],["Chimica Commerciale Srl","1"],["Ciaramella Giuseppina","1"],["Cibus Hub Srl","2"],["Cimolai S.P.A.","1"],["Cioli Egidio Srl","2"],["Citarella Gestioni Srl","1"],["Clr Srl","1"],["Clustin S.R.L.","3"],["Co. Pre Srl","1"],["Codebo' S.P.A.","1"],["Colombo Ermanno E C. Snc","1"],["Com.Pac Srl","1"],["Como Fitness Srl","2"],["Comservice Societa' Cooperativa","1"],["Comunita' Terapeutica L'Angolo","3"],["Condominio Corso Garibaldi 49","1"],["Condominio Corso Italia 11","1"],["Condominio Corti Dei Missaglia","1"],["Condominio Magnasco","1"],["Condominio Porta Romana 132","1"],["Condominio Primavera","1"],["Condominio San Giulio","1"],["Condominio Via Carozzi 38","1"],["Condominio Via Ovada 25","1"],["Condominio Viale Regina Giovanna","1"],["Consecution Group S.R.L.","1"],["Consecution Srl","1"],["Consorzio Agrario Terrepadane","1"],["Consult Service S.R.L.","3"],["Conti Italia S.R.L.","1"],["Conti S.N.C","1"],["Cooper Srl","1"],["Cooperativa di Solidarietà Lautari","2"],["Cooperativa Sociale Sanitalia Service","2"],["Corsico Fitness S.R.L.","2"],["Cosmai Coffee Group Srl","1"],["Cotonificio Verbanese S.P.A.","1"],["Coworld S.R.L.","1"],["Cremi' Srl","1"],["Ctm Ambiente Srl","1"],["Cutuli Franca","1"],["Cz Mail Srl","1"],["Danone Nutricia Spa","1"],["Dapao Srl","1"],["Datamatic Sistemi E Servizi Spa","1"],["De La Ville S.R.L.","1"],["De Robertis Srl","1"],["Decanter System S.R.L.","1"],["Decor-Style Srl","1"],["Deimos Srl","2"],["Deledda Holdings Srl","1"],["Deloitte & Touche S.P.A.","3"],["Deloitte Business Solution S.R.L.","3"],["Deloitte Climate & Sustainability","3"],["Deloitte Consulting S.R.L.","3"],["Deloitte Financial Advisor S.R.L.","3"],["Deloitte Italy S.P.A.","3"],["Deloitte Legal S.T.A.R.L.","3"],["Deloitte Nexthub S.R.L.","3"],["Deloitte Touche Tohmatsu Tax","3"],["Delta Costruzioni Meccaniche","1"],["Demas Srl","1"],["Development Engineering Automation","1"],["Dh Trading Srl","1"],["Di Rosa Angelo S.A.S","1"],["Di.Se.F. Distribuzione Servizi Funebri","1"],["Dike Mold S.R.L","1"],["Dki S.R.L.","1"],["Dolci Sapori Srl","1"],["Dompe' Farmaceutica Spa","1"],["Doringel Srl","2"],["Dottor System In Agro","1"],["Dottor System Srl","1"],["Dsquared2 Re Srl","2"],["Dsquared2 Retail Srl","2"],["Dsquared2 Spa","2"],["Dumarey Automotive Italia Spa","1"],["E.B.E. S.R.L.","1"],["Ecm Recuperi Srl","1"],["Eco Contract Srl","1"],["Econocom International Italia S.P.A.","3"],["Edilconsult S.R.L.","1"],["Edizioni Riza S.P.A.","1"],["Effemeccanica","1"],["Effequattro Sviluppo Srl","1"],["Electro I.B. Srl","1"],["Emilfill Srl","1"],["Enda Societa' A Responsabilita Limitata","1"],["Enimac Srl","1"],["Enjoy Srl","1"],["Eno Caccia C.S.S.A. Onlus","2"],["Eredi Di Bonacina Mario Srl","3"],["Etica Snc Di Saglietti Matteo","1"],["Eu Design S.P.A","1"],["Eu Design/Fenili Group S.P.A","1"],["Eurocab Torino Srl","2"],["Eurofonte S.N.C.","1"],["European Malpensa Vocational Training","3"],["Europressvit - S.R.L.","1"],["Eurovercos Srl","1"],["Excen S.R.L.","1"],["F.B.B Societa' Cooperativa Soci","1"],["F.Lli Fonzo S.N.C.","1"],["F.Lli Fonzo Srl","1"],["F.Lli La Cozza Srl","1"],["Fandango Club Spa","1"],["Farmacia Buatier Snc","1"],["Fenili S.R.L","1"],["Ferrara Fitness Srl","2"],["Festina Lente S.R.L","1"],["Fgs Investimenti S.R.L.","1"],["Filatura Pettinata Mello Srl","1"],["Filmag Italia S.P.A","2"],["Fimotex - S.R.L.","1"],["Fineffe Srl","1"],["Fit Express Holding Srl","2"],["Flavourart S.R.L.","1"],["Flextech S.R.L","2"],["Fluidmec Spa","1"],["Fly Service Srl","1"],["Fondazione Camplus","3"],["Fondazione Ceur","3"],["Fondazione Deloitte","3"],["Fondazione Edutecne","3"],["Fondazione Umberto Veronesi Ets","1"],["Fonderia Gatti","1"],["Fonderia Gollini Srl","1"],["Fonderia Pizeta S.R.L","2"],["Forama Srl","1"],["Formula Spa","1"],["Fornidea S.R.L.","1"],["Forniture Industriali Dubbini Spa","1"],["Fornoni Pallets S.R.L","1"],["Franklin Templeton International","3"],["Fratelli Gregorio S.R.L.","1"],["Free Spirit S.A.S","1"],["Freschi & Schiavoni S.R.L.","1"],["Frosinone Fitness Srl","2"],["Garbagnate Fitness Srl","2"],["Gaser Bologna Srl","3"],["Gaser Ossido Duro S.R.L","2"],["Gaser San Giuliano S.R.L","3"],["Gaser T.C. Srl","3"],["Gdc Sempione S.R.L","2"],["Gea S.R.L.","1"],["Geartec S.P.A","1"],["Geotag Srl","1"],["Gerla Srl","1"],["Gerratana - Blanco S.R.L.","1"],["Gest.I.Tel S.R.L.","1"],["Giellepi S.P.A.","1"],["Gifet S.R.L.","1"],["Gilmac S.R.L.","1"],["Giorgio Armani S.P.A","1"],["Girmec Technologies Srl","1"],["Giusto Faravelli S.P.A.","3"],["Gn Techonomy Srl","1"],["Gnali Catenificio S.R.L.","1"],["Golf Club Castello Tolcinasco","1"],["Golf Tolcinasco S.R.L.","1"],["Golf Vacanze Srl","1"],["Golosita' Srl","1"],["Grafinpack S.R.L.","1"],["Graphidea Srl","1"],["Grosseto Fitness S.R.L.","2"],["Gruppo Nadine S.R.L.","1"],["Gruppo Tessile Abbigliamento Moda","1"],["Hair Beauty Store Borsieri S.A.S.","1"],["Hair Forte S.R.L.","1"],["Hair Store City Srl","1"],["Hair Store Garibaldi Srl","1"],["Happy Beef S.R.L.","1"],["Harbour Club Milano S.P.A.","2"],["Hbs S.P.A.","1"],["Hclog Srl","1"],["Heidenhain Italiana Srl","1"],["Help It Srl","2"],["Hic Srl","1"],["High Tech Project S.R.L.","2"],["Hq 1.0 S.R.L.","1"],["Hubergroup Italia Spa","1"],["Humanform Srl","1"],["Humangest Spa","3"],["Humansolution Srl","3"],["Hyma S.R.L.","1"],["I.O.T.T. S.R.L.","1"],["Icom Educational Srl","1"],["Icom Srl","1"],["Ideallux S.R.L.","1"],["Igm Srl","1"],["Il Banconiere Srl","1"],["Il Maestro S.R.L.","1"],["Il Sapore Dei Sogni","1"],["Imeas Spa","3"],["Imp.Ca Srl","1"],["Impianti & Pools S.R.L","2"],["Impresoft Engage S.R.L.","1"],["Impresoft S.P.A","1"],["Impresoft Univerce S.R.L.","1"],["In Cammino Soc.Coop.Sociale","2"],["In Cammino Societa' Cooperativa","2"],["In2Law S.R.L. S.B.","3"],["Incisoria Pastormerlo Srl","1"],["Iniziative Comuni Scrl","3"],["Inplace S.R.L.","3"],["International Health Science","1"],["Interzero Italy S.R.L.","1"],["Ipcochemical Europe S.R.L.","1"],["Ipitalia Srl","1"],["Irma Srl","2"],["Isaf S.R.L.","1"],["Istituto Di Vigilanza Privata","1"],["Istituto Il Baluardo Spsa","3"],["Istituto Tecnologico Superiore","3"],["Italian Propellers S.R.L","1"],["Italian Trading Company S.R.L.","1"],["Italutensil S.R.L.","2"],["Jks Splash S.R.L","2"],["Jl S.R.L.","1"],["Key Service Srl","1"],["Kgt S.R.L.","1"],["Khatod Optolectronic S.R.L.","2"],["Kingdom Of Beauty Srl","1"],["Kipcast Srl","1"],["Klein Russo Srl","1"],["Kopron Service 2000 Srl","2"],["Kopron Spa","2"],["Kromos S.R.L.","1"],["L'Approdo Del Marchese Srl","1"],["L.G.T. - Laboratorio Geotecnico","3"],["La Belle Epoque Di Silvia Cosmai","1"],["La Castellana Spa","1"],["La Cucina Della Marianna S.R.L.","1"],["La Dolceria Srl","1"],["La Masseria S.R.L","1"],["La Precisa 3C S.R.L.","1"],["La Pulitrice S.R.L.","1"],["Lab. Met. S.R.L.","3"],["Lagost S.R.L.","2"],["Laif Srl","1"],["Lambda Cnd S.R.L.","3"],["Lamfer Srl","1"],["Lanificio Dell'Olivo S.P.A","2"],["Lanza Pietro","1"],["Latina Fitness S.R.L.","2"],["Lavanderia Borromeo S.R.L.","1"],["Lazzarini S.P.A.","1"],["Lbg Sicilia Srl","1"],["Le Dolcezze Srl","1"],["Leghe Leggere Lavorate Srl.","2"],["Leocata Mangimi S.P.A","1"],["Like Reply S.R.L.","2"],["Linset & Co. S.R.L.","3"],["Livanova Plc Filiale Italiana","2"],["Livanova Site Management Srl","2"],["Living Srl","2"],["Locauto Rent S.P.A.","2"],["Locauto Spa","2"],["Loft-Y Srl","1"],["Login Srl","1"],["Logistica 2 Srl","1"],["Lu'.Li'.Lu'. Srl","1"],["Lucas","1"],["Lucca Fitness Srl","2"],["Lucca San Vito Fitness Srl","2"],["Lucidarte S.N.C.","1"],["Lungotevere S.R.L.","2"],["M.V.B. Bagattini S.R.L.","1"],["M6 Investments S.R.L.","3"],["Maag Gear S.P.A.","2"],["Mac S.R.L","1"],["Maglieria Gina Srl","1"],["Maira Hotel Srl","1"],["Manfin Srl","1"],["Mangimificio I.Ma.R. S.R.L","1"],["Manifattura Sesia S.R.L","2"],["Margherita Srl","2"],["Marifin S.R.L","2"],["Mario Nava S.P.A.","1"],["Massignani & C Srl","1"],["Mastercrom S.R.L","1"],["Mbe Worldwide S.P.A","1"],["Mcf Ambiente S.R.L.","3"],["Medi-Care Solution Srl","1"],["Mediflor Societa' Agricola","1"],["Melzo Fitness Srl","2"],["Metal Services - Materials Testing","3"],["Mevi Italia - S.R.L.","1"],["Milleservizi Srl","1"],["Milpres Srl","1"],["Miretti Spa","1"],["Miro Street Food S.R.L.","2"],["Mirtillo S.R.L.","1"],["Mith S.R.L.","1"],["Mobilita Its Academy","3"],["Molino Di Casalborgone S.R.L.","1"],["Monza 16 S.R.L.","1"],["Monza Villa Reale Fitness S.R.L.","2"],["Moro 23 S.R.L.","1"],["Movendo Technology Srl","1"],["Mtl Montichiari Trasporti Logi","1"],["Mtl Trasformazioni Lamiere Srl","1"],["Mvn Engineering & Construction","2"],["Mvn Metal Working S.R.L.","2"],["Mvn Service & Packaging Srl","2"],["Mvn Srl","2"],["Nat Service S.R.L.","1"],["Nava Daniele","1"],["Nbsl Europe Srl","1"],["Nbsl Italia Srl","1"],["Necchi Re S.R.L.","1"],["New Technology Di Urgnani","1"],["New Technology Racing Team","1"],["Nicea Srl","3"],["Nl Real Estate Srl","1"],["Nova Tecnostampi S.R.L","1"],["Novara Fitness Srl","2"],["Novelli 1934 Srl","1"],["Novi1 S.R.L.","1"],["Nuovo Mondo Societa' Cooperativa","3"],["O.Elmi Srl","1"],["O.M.G S.A.S","1"],["Occhipinti & Corallo Srl","1"],["Odstore Duomo Srl","1"],["Odstore Giussano Srl","1"],["Odstore Magenta Srl","1"],["Odstore Padova Srl","1"],["Odstore Piazza Di Spagna Srl","1"],["Odstore Rozzano Srl","1"],["Odstore S.R.L.","1"],["Odsweet Srl","1"],["Officina Meccanica Grisi S.R.L.","1"],["Officina Meccanica Ombc","1"],["Officina Meccanica Ricetti Sas","2"],["Officina Palmabella Srl","1"],["Officine Giudici S.R.L.","1"],["Officine Innovazione S.R.L.","1"],["Olympia Wealth Management Ltd","1"],["Omab S.R.L","2"],["Omas Stampi S.R.L.","1"],["Omec Serrature S.P.A.","1"],["Open-Co S.R.L.","1"],["Original Bucket Srl","1"],["Ospitami Srl","2"],["Ottantuno Srl","1"],["Outlenna Srl","1"],["Pac Spa","2"],["Padan Srl","2"],["Paderno Fitness Srl","2"],["Palazzoli Spa","1"],["Palazzolo Fitness","2"],["Panpizza Srl","1"],["Papas Srl","1"],["Paradisea Societa' Cooperativa","1"],["Pastificio Battagello Srl","1"],["Pelizzari F.Lli","1"],["Pepito Srl","1"],["Pero Fitness S.R.L.","2"],["Pesaro Fitness Srl","2"],["Phitogen Beauty Labs Srl","1"],["Phoenix S.R.L.","1"],["Pietre Lux S.A.S.","1"],["Pioltello Fitness Srl","2"],["Pistoia Fitness Srl","2"],["Piva Marco","1"],["Pixel S.R.L.","1"],["Plast.Met S.R.L.","1"],["Poggibonsi Chiano Fitness Srl","2"],["Pogliano Fitness S.R.L.","2"],["Polaris Srl","1"],["Polaris Works Srl","1"],["Precision Spring Europa","1"],["Print Srl","1"],["Prisma Spa","1"],["Prive' Di Parisi Antonia","1"],["Pro Habitare Srl","3"],["Pro Infantia S.P.A","1"],["Profital Spa","1"],["Progetto Immobiliare S.R.L.","1"],["Propagroup S.P.A","2"],["Pulitura Metalli Lorenzi","1"],["Q.I. Composites S.R.L.","3"],["Qswim Ssd A R.L","1"],["Qualitas Informatica Spa","1"],["Quality Control Group S.R.L.","1"],["Quickmatic Srl","1"],["Radicymaty Srl","1"],["Radio Digitale S.R.L.","2"],["Radio Zeta S.R.L.","2"],["Randstad Group Italia S.P.A","2"],["Randstad Hr Solutions Srl","2"],["Randstad Italia S.P.A.","2"],["Ravazzi S.P.A.","2"],["Ravenna Fitness Srl","2"],["Rb Bagattini S.R.L.","1"],["Reale Immobili S.P.A","3"],["Regenyal Laboratories Srl","1"],["Relais Cascina Era Srl","1"],["Rembrandt 47 Srl","1"],["Reply Digital Experience S.R.L.","2"],["Reply Services S.R.L.","2"],["Res Plastic - S.P.A.","1"],["Residenza Binda","1"],["Rialto Srl","1"],["Ribes Solutions S.R.L.","1"],["Rigodanza Serafino & C.","1"],["Ripa Srl","2"],["Rito S.R.L.","1"],["Rivoli Fitness Srl","2"],["Roma Casal Bertone Fitness Srl","2"],["Roma Domus Dilettantistica","2"],["Romagna Fitness Srl","2"],["Rovigo Fitness Srl","2"],["Rozzano Ssdl","2"],["Rtl 102,500 Hit Radio S.R.L.","2"],["Rubix Srl","2"],["S.A.I. Fra International S.R.L.","1"],["S.C.F. Sicilian Carob Flour","2"],["S.C.R.","1"],["S.P.M. Sas Di Ossama Elashmawi","1"],["S.T.M S.P.A","1"],["Salumificio Alborghetti S.R.L.","1"],["Samsic Italia S.P.A.","3"],["San Benedetto Fitness Srl","2"],["San Giuseppe Moscati Scs","1"],["San Marco Spa","1"],["San Vittore Olona Fitness S.R.L.","2"],["Sanitalia Medical Care Srl","2"],["Santer Reply S.P.A.","2"],["Sapori Artigianali S.R.L.","1"],["Saronno Fitness Srl","2"],["Savills Investment Management Sgr","1"],["Savio Spa","2"],["Segheria Fornoni Srl","1"],["Senago Fitness Srl","2"],["Seridall S.R.L","3"],["Sermonaldo Srl","1"],["Service 2000 S.R.L.","1"],["Servizi E Seta S.R.L","1"],["Sew-Eurodrive S.A.S.","2"],["Sg Company S.P.A.","3"],["Sgb Humangest Holding Srl","1"],["Sicuritalia Group Holding Spa","3"],["Sicuritalia S.P.A.","3"],["Siena Fitness S.R.L","2"],["Siena Monteriggioni Fitness Srl","2"],["Silanos S.R.L","1"],["Silea Liquid Transfer Srl","1"],["Sileci Giuseppe","2"],["Sime Di Schinetti","1"],["Sinergie S.R.L.","3"],["Sirme S.R.L.","1"],["Smapp S.P.A.","1"],["Smart Societa' Cooperativa","1"],["Societa' Agricola Bonetti","1"],["Somi Srl","1"],["Sorin Group Italia Srl","1"],["Soul Burger S.R.L.","1"],["Spaccio Dolciario Pogliano Srl","1"],["Spadola&Figli S.R.L.","1"],["Spazio Fitness Club Srl","1"],["Special Srl","2"],["Spes 86 Srl","2"],["Splash Club","1"],["Spoon srl","3"],["Staff Service Srl","1"],["Stallergenes Italia Srl","2"],["Store S.R.L.","1"],["Sts Deloitte For Professionals","3"],["Sts Deloitte Stp S.R.L.","3"],["Studio Associato Andreose","1"],["Studio Colore Grafica Srl","1"],["Studio Marco Piva S.R.L.","1"],["Studio Termotecnico Di Legnani","1"],["Sunnext Srl","1"],["Suprem S.R.L.","1"],["Surface Engineering Srl","1"],["Sweet Srl","1"],["Sybel S.R.L.","1"],["Synlab Data Medica S.R.L.","3"],["Synlab Italia Srl","3"],["Synlab Lazio S.R.L.","3"],["Synlab Med S.R.L.","3"],["Synlab Medical Srl","3"],["Synlab Sdn Spa","3"],["Synergon Spa","1"],["Syscons Srl","1"],["T.M.G. Srl","1"],["T.P.A. Tecnologie E Prodotti","1"],["Target Srl","1"],["Tasty Srl","1"],["Teamwork S.R.L.","1"],["Technology Reply S.R.L.","2"],["Tecnoprint - S.R.L.","2"],["Tekmo Srl","1"],["Tentazioni Srl","1"],["Terracina Fitness Srl","1"],["Tessitura Carlo Bassetti S.P.A.","1"],["Testing Srl","3"],["The Rocks S.R.L.","1"],["Tiesse Robot S.P.A.","1"],["Tokbo S.R.L.","1"],["Torino Ponchielli Fitness Srl","2"],["Trade Srl","1"],["Trasporti Romagna S.P.A.","1"],["U-Series Srl","3"],["U.P.M. Produzione Srl","1"],["Uniseals Srl","1"],["V.G. Metalmeccanica S.R.L.","1"],["V.M.C. Mottini S.R.L.","1"],["Valle Spluga S.P.A.","2"],["Vapore Assago Srl","1"],["Varedo Fitness Srl","2"],["Varese Fitness S.R.L.","2"],["Velletri Fitness Srl S.R.L.","2"],["Verbar S.R.L.","1"],["Vergani Pietro E F.Lli Srl","2"],["Veterinaria Tridentina Srl","1"],["Vetorix Engineering S.R.L.","3"],["Vetroauto Srl","3"],["Vetrocar & Bus Spa","3"],["Volpe S.R.L.","1"],["White Lab S.R.L","3"],["White Real Estate","1"],["X-Zone Srl","3"],["Xerox Spa","1"],["Xister Reply S.R.L.","2"],["Zaco S.R.L","3"],["Zaffiro Centrosud Srl","3"],["Zaffiro Costruzioni S.R.L","3"],["Zaffiro Healthcare S.R.L","3"],["Zaffiro Holding Spa","3"],["Zaffiro Srl","3"],["Zzeta Martignacco Srl","3"],["Zzeta Srl","3"]];
 
-const CAPACITY={Luca:8,Valentina:8,Miriam:6},TOTAL_CAP=22;
+const CAP={Luca:8,Valentina:8,Miriam:6};
 const sc=v=>parseInt(v)||0;
-const isSynlab=n=>n.toLowerCase().includes("synlab");
-const isReale=n=>n==="Reale Immobili S.P.A";
+const isSyn=n=>n.toLowerCase().includes("synlab");
+const isRea=n=>n==="Reale Immobili S.P.A";
 
-function computeInitial(){
+function buildInitial(){
   let a=RAW.map(r=>({name:r[0],val:r[1],assigned:null}));
-  a.forEach(r=>{if(isReale(r.name))r.assigned="Luca";if(isSynlab(r.name))r.assigned="Valentina";});
-  const totalW=a.reduce((s,r)=>s+sc(r.val),0);
-  const target={Luca:totalW*8/22,Valentina:totalW*8/22,Miriam:totalW*6/22};
-  const running={Luca:0,Valentina:0,Miriam:0};
-  a.forEach(r=>{if(r.assigned)running[r.assigned]+=sc(r.val);});
+  a.forEach(r=>{if(isRea(r.name))r.assigned="Luca";if(isSyn(r.name))r.assigned="Valentina";});
+  const tw=a.reduce((s,r)=>s+sc(r.val),0);
+  const tgt={Luca:tw*8/22,Valentina:tw*8/22,Miriam:tw*6/22};
+  const run={Luca:0,Valentina:0,Miriam:0};
+  a.forEach(r=>{if(r.assigned)run[r.assigned]+=sc(r.val);});
   a.filter(r=>!r.assigned).sort((a,b)=>sc(b.val)-sc(a.val)).forEach(r=>{
-    const best=["Luca","Valentina","Miriam"].reduce((a,b)=>(running[a]/CAPACITY[a])<=(running[b]/CAPACITY[b])?a:b);
-    r.assigned=best;running[best]+=sc(r.val);
+    const b=["Luca","Valentina","Miriam"].reduce((a,b)=>(run[a]/CAP[a])<=(run[b]/CAP[b])?a:b);
+    r.assigned=b;run[b]+=sc(r.val);
   });
   for(let p=0;p<4;p++){
-    for(const val of["2","1"]){
-      a.filter(r=>r.val===val&&!isSynlab(r.name)&&!isReale(r.name)).forEach(r=>{
+    for(const v of["2","1"]){
+      a.filter(r=>r.val===v&&!isSyn(r.name)&&!isRea(r.name)).forEach(r=>{
         const w={Luca:0,Valentina:0,Miriam:0};
         a.forEach(x=>{if(w[x.assigned]!==undefined)w[x.assigned]+=sc(x.val);});
-        const cur=r.assigned,overT=w[cur]-target[cur];
-        const best=["Luca","Valentina","Miriam"].filter(p=>p!==cur).reduce((a,b)=>(target[b]-w[b])>(target[a]-w[a])?b:a);
-        if(overT>sc(r.val)*.5&&(target[best]-w[best])>sc(r.val)*.5)r.assigned=best;
+        const c=r.assigned,ov=w[c]-tgt[c];
+        const b=["Luca","Valentina","Miriam"].filter(p=>p!==c).reduce((a,b)=>(tgt[b]-w[b])>(tgt[a]-w[a])?b:a);
+        if(ov>sc(r.val)*.5&&(tgt[b]-w[b])>sc(r.val)*.5)r.assigned=b;
       });
     }
   }
   return a;
 }
 
-const INITIAL=computeInitial();
-let state=INITIAL.map(r=>({...r}));
-let activeFilter="all",activeValFilter="all";
+const INIT=buildInitial();
+let state=INIT.map(r=>({...r,changedBy:null}));
+let changeLog=[];
+let fPerson="all",fVal="all",fSearch="",curPage=1,pageSize=50;
+let currentUser="";
+let pendingLoadData=null;
 
-function getStats(){
-  const s={Luca:{count:0,w:0},Valentina:{count:0,w:0},Miriam:{count:0,w:0}};
-  state.forEach(r=>{if(s[r.assigned]){s[r.assigned].count++;s[r.assigned].w+=sc(r.val);}});
-  return s;
+// ── USER ──
+function onUserTyping(){
+  const v=document.getElementById("user-name-input").value.trim();
+  if(v.length>=2) setUser(v);
+}
+function onUserKey(e){if(e.key==="Enter"){const v=document.getElementById("user-name-input").value.trim();if(v)setUser(v);}}
+function setUser(name){
+  currentUser=name;
+  document.getElementById("user-active-name").textContent=name;
+  document.getElementById("user-active-display").style.display="flex";
+  document.getElementById("user-name-input").style.display="none";
+}
+function resetUser(){
+  currentUser="";
+  document.getElementById("user-active-display").style.display="none";
+  document.getElementById("user-name-input").style.display="block";
+  document.getElementById("user-name-input").value="";
+  document.getElementById("user-name-input").focus();
 }
 
+// ── HELPERS ──
+function escHtml(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function ts(){return new Date().toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"});}
+
+// ── FILTERED LIST ──
+function getFiltered(){
+  return state.map((r,i)=>({...r,idx:i,changed:r.assigned!==INIT[i].assigned}))
+    .filter(r=>{
+      if(fPerson==="changed"&&!r.changed)return false;
+      if(fPerson!=="all"&&fPerson!=="changed"&&r.assigned!==fPerson)return false;
+      if(fVal!=="all"&&r.val!==fVal)return false;
+      if(fSearch&&!r.name.toLowerCase().includes(fSearch))return false;
+      return true;
+    });
+}
+
+// ── STATS ──
 function updateStats(){
-  const stats=getStats();
-  const totalW=state.reduce((s,r)=>s+sc(r.val),0);
-  const tgt={Luca:Math.round(totalW*8/22),Valentina:Math.round(totalW*8/22),Miriam:Math.round(totalW*6/22)};
+  const s={Luca:{c:0,w:0},Valentina:{c:0,w:0},Miriam:{c:0,w:0}};
+  state.forEach(r=>{if(s[r.assigned]){s[r.assigned].c++;s[r.assigned].w+=sc(r.val);}});
+  const tw=state.reduce((s,r)=>s+sc(r.val),0);
+  const tgt={Luca:Math.round(tw*8/22),Valentina:Math.round(tw*8/22),Miriam:Math.round(tw*6/22)};
   ["Luca","Valentina","Miriam"].forEach(p=>{
-    document.getElementById("cnt-"+p.toLowerCase()).textContent=stats[p].count;
-    document.getElementById("w-"+p.toLowerCase()).textContent=stats[p].w;
-    const diff=stats[p].w-tgt[p];
-    const el=document.getElementById("badge-"+p.toLowerCase());
-    el.innerHTML=Math.abs(diff)<=5
-      ?`<span class="stat-badge badge-ok">Bilanciato</span>`
-      :diff>0?`<span class="stat-badge badge-over">+${diff} sopra target</span>`
-      :`<span class="stat-badge badge-under">${Math.abs(diff)} sotto target</span>`;
+    document.getElementById("cnt-"+p.toLowerCase()).textContent=s[p].c;
+    document.getElementById("w-"+p.toLowerCase()).textContent=s[p].w;
+    const d=s[p].w-tgt[p],el=document.getElementById("badge-"+p.toLowerCase());
+    el.innerHTML=Math.abs(d)<=5?`<span class="kpi-pill pill-ok">✓ Bilanciato</span>`
+      :d>0?`<span class="kpi-pill pill-over">↑ +${d} sopra target</span>`
+      :`<span class="kpi-pill pill-under">↓ ${Math.abs(d)} sotto target</span>`;
   });
 }
 
-function changedCount(){return state.filter((r,i)=>r.assigned!==INITIAL[i].assigned).length;}
+// ── RENDER TABLE ──
+function render(){
+  const filtered=getFiltered();
+  const total=filtered.length;
+  const totalPages=pageSize>=9999?1:Math.max(1,Math.ceil(total/pageSize));
+  if(curPage>totalPages)curPage=totalPages;
+  const start=pageSize>=9999?0:(curPage-1)*pageSize;
+  const end=pageSize>=9999?total:Math.min(start+pageSize,total);
+  const page=filtered.slice(start,end);
+  const tbody=document.getElementById("main-tbody");
+  tbody.innerHTML="";
+  page.forEach((r,li)=>{
+    const tr=document.createElement("tr");
+    tr.className="dr"+(r.changed?" changed":"");
+    const byTag=r.changed&&r.changedBy?`<span class="who-pill">${escHtml(r.changedBy)}</span>`:"";
+    tr.innerHTML=`
+      <td style="color:#94a3b8;font-size:11px">${start+li+1}</td>
+      <td><span class="client-name">${escHtml(r.name)}</span>${r.changed?`<span class="mod-pill">mod.</span>`:""}${byTag}</td>
+      <td>${r.val==="3"?`<span class="bv3">Complesso</span>`:r.val==="2"?`<span class="bv2">Medio</span>`:`<span class="bv1">Standard</span>`}</td>
+      <td><select class="assign-sel" onchange="changeAssign(${r.idx},this.value)">
+        <option value="Luca"${r.assigned==="Luca"?" selected":""}>Luca</option>
+        <option value="Valentina"${r.assigned==="Valentina"?" selected":""}>Valentina</option>
+        <option value="Miriam"${r.assigned==="Miriam"?" selected":""}>Miriam</option>
+      </select></td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById("pag-info").textContent=
+    total===0?"Nessun risultato":pageSize>=9999?`${total} clienti`:`${start+1}–${end} di ${total} clienti`;
+  const ctrl=document.getElementById("pag-controls");ctrl.innerHTML="";
+  if(pageSize<9999&&totalPages>1){
+    const mkBtn=(lbl,pg,dis,act)=>{const b=document.createElement("button");b.className="pag-btn"+(act?" active":"");b.textContent=lbl;b.disabled=dis;b.onclick=()=>{curPage=pg;render();};return b;};
+    ctrl.appendChild(mkBtn("‹",curPage-1,curPage===1,false));
+    const pages=[];
+    if(totalPages<=7){for(let i=1;i<=totalPages;i++)pages.push(i);}
+    else{pages.push(1);if(curPage>3)pages.push("…");for(let i=Math.max(2,curPage-1);i<=Math.min(totalPages-1,curPage+1);i++)pages.push(i);if(curPage<totalPages-2)pages.push("…");pages.push(totalPages);}
+    pages.forEach(p=>{if(p==="…"){const s=document.createElement("span");s.textContent="…";s.style.cssText="padding:0 4px;color:#94a3b8;font-size:12px;";ctrl.appendChild(s);}else ctrl.appendChild(mkBtn(p,p,false,p===curPage));});
+    ctrl.appendChild(mkBtn("›",curPage+1,curPage===totalPages,false));
+  }
+}
+
+function changeAssign(i,v){
+  if(!currentUser){showToast("⚠ Inserisci prima il tuo nome in alto","red");render();return;}
+  const prev=state[i].assigned;
+  if(prev===v)return;
+  state[i].assigned=v;
+  state[i].changedBy=currentUser;
+  changeLog.push({time:ts(),user:currentUser,text:`"${state[i].name}": ${prev} → ${v}`});
+  renderLog();updateStats();updateChangesUI();render();
+}
+
+// ── LOG ──
+function renderLog(){
+  const list=document.getElementById("log-list");
+  if(changeLog.length===0){list.innerHTML='<div class="log-empty">Nessuna modifica registrata in questa sessione.</div>';return;}
+  list.innerHTML="";
+  [...changeLog].reverse().forEach(e=>{
+    const row=document.createElement("div");
+    row.className="log-row"+(e.user==="sistema"?" log-system":"");
+    row.innerHTML=`<span class="log-time">${e.time}</span><span class="log-user">${escHtml(e.user)}</span><span class="log-text">${escHtml(e.text)}</span>`;
+    list.appendChild(row);
+  });
+}
+function clearLog(){changeLog=[];renderLog();showToast("Log svuotato");}
 
 function updateChangesUI(){
-  const n=changedCount();
+  const n=state.filter((r,i)=>r.assigned!==INIT[i].assigned).length;
   document.getElementById("btn-reset").style.display=n>0?"":"none";
   const lbl=document.getElementById("changes-count");
   lbl.style.display=n>0?"":"none";
-  lbl.textContent=n>0?`${n} modifica${n>1?"he":""}`:"";}
-
-function valBadge(v){
-  return v==="3"?`<span class="badge-v3">Complesso</span>`:v==="2"?`<span class="badge-v2">Medio</span>`:`<span class="badge-v1">Standard</span>`;}
-
-function renderTable(){
-  const tbody=document.getElementById("main-tbody");
-  const search=document.getElementById("search").value.toLowerCase();
-  tbody.innerHTML="";
-  let visible=0,total=0;
-  state.forEach((r,i)=>{
-    total++;
-    const isChanged=r.assigned!==INITIAL[i].assigned;
-    const matchSearch=!search||r.name.toLowerCase().includes(search);
-    const matchPerson=activeFilter==="all"||(activeFilter==="changed"&&isChanged)||r.assigned===activeFilter;
-    const matchVal=activeValFilter==="all"||r.val===activeValFilter;
-    const show=matchSearch&&matchPerson&&matchVal;
-    if(show)visible++;
-    const tr=document.createElement("tr");
-    tr.className="data-row"+(isChanged?" changed-row":"")+(show?"":" hidden-row");
-    tr.innerHTML=`
-      <td style="color:#94a3b8;font-size:11px;width:36px">${total}</td>
-      <td><span class="client-name">${r.name}</span>${isChanged?`<span class="changed-pill">mod.</span>`:""}</td>
-      <td>${valBadge(r.val)}</td>
-      <td>
-        <select class="assign-select" onchange="changeAssign(${i},this.value)">
-          <option value="Luca"${r.assigned==="Luca"?" selected":""}>Luca</option>
-          <option value="Valentina"${r.assigned==="Valentina"?" selected":""}>Valentina</option>
-          <option value="Miriam"${r.assigned==="Miriam"?" selected":""}>Miriam</option>
-        </select>
-      </td>`;
-    tbody.appendChild(tr);
-  });
-  document.getElementById("results-count").textContent=`${visible} di ${total} clienti visualizzati`;
-}
-
-function changeAssign(i,v){state[i].assigned=v;updateStats();updateChangesUI();renderTable();}
+  lbl.textContent=n>0?`${n} modifica${n!==1?"he":""}`:"";}
 
 function setFilter(f){
-  activeFilter=f;
-  ["all","luca","valentina","miriam","changed"].forEach(k=>{const el=document.getElementById("f-"+k);if(el)el.classList.remove("active");});
+  fPerson=f;curPage=1;
+  ["all","luca","valentina","miriam","changed"].forEach(k=>{const el=document.getElementById("f-"+k);if(el)el.className="f-btn";});
   const map={all:"f-all",Luca:"f-luca",Valentina:"f-valentina",Miriam:"f-miriam",changed:"f-changed"};
-  const el=document.getElementById(map[f]||"f-all");if(el)el.classList.add("active");
-  renderTable();
-}
-
+  const cl={all:"act-all",Luca:"act-luca",Valentina:"act-valentina",Miriam:"act-miriam",changed:"act-changed"};
+  const el=document.getElementById(map[f]);if(el)el.classList.add(cl[f]);render();}
 function setValFilter(v){
-  activeValFilter=activeValFilter===v?"all":v;
-  ["v1","v2","v3"].forEach(k=>{const el=document.getElementById("f-"+k);if(el){el.classList.remove("active","active-v1","active-v2","active-v3");}});
-  if(activeValFilter!=="all"){
-    const el=document.getElementById("f-v"+activeValFilter);
-    if(el)el.classList.add("active","active-v"+activeValFilter);
+  fVal=fVal===v?"all":v;curPage=1;
+  ["v1","v2","v3"].forEach(k=>{const el=document.getElementById("f-"+k);if(el)el.className="f-btn";});
+  if(fVal!=="all"){const el=document.getElementById("f-v"+fVal);if(el)el.classList.add("act-v"+fVal);}render();}
+function onSearch(){fSearch=document.getElementById("search").value.toLowerCase();curPage=1;render();}
+function setPageSize(v){pageSize=parseInt(v);curPage=1;render();}
+
+// ── DOWNLOAD SESSION ──
+function downloadSession(){
+  const session={version:"2.0",savedAt:new Date().toISOString(),savedBy:currentUser||"Anonimo",
+    assignments:state.map(r=>({name:r.name,val:r.val,assigned:r.assigned,changedBy:r.changedBy||null})),
+    changeLog:changeLog};
+  const blob=new Blob([JSON.stringify(session,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  const d=new Date();
+  const ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+  const us=(currentUser||"sessione").replace(/\s+/g,"_").toLowerCase().replace(/[^a-z0-9_]/g,"");
+  a.href=url;a.download=`portfolio_caring_${us}_${ds}.json`;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  showToast("✓ Sessione scaricata","green");
+}
+
+// ── LOAD SESSION ──
+function loadSession(evt){
+  const file=evt.target.files[0];if(!file)return;evt.target.value="";
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.assignments||!Array.isArray(data.assignments))throw new Error("Formato non valido");
+      pendingLoadData=data;
+      const sb=data.savedBy||"Sconosciuto";
+      const sa=data.savedAt?new Date(data.savedAt).toLocaleString("it-IT"):"—";
+      document.getElementById("modal-load-desc").textContent=
+        `Stai per caricare la sessione di "${sb}" (salvata il ${sa}). Le assegnazioni correnti verranno aggiornate e il log verrà unito. Continuare?`;
+      document.getElementById("modal-load").classList.add("open");
+    }catch(err){showToast("❌ File non valido o corrotto","red");pendingLoadData=null;}
+  };
+  reader.readAsText(file);
+}
+function cancelLoad(){pendingLoadData=null;closeModal("modal-load");}
+function confirmLoad(){
+  if(!pendingLoadData)return;
+  const data=pendingLoadData;pendingLoadData=null;closeModal("modal-load");
+  const byName={};
+  data.assignments.forEach(r=>{byName[r.name]=r;});
+  state.forEach(r=>{
+    const d=byName[r.name];
+    if(d&&["Luca","Valentina","Miriam"].includes(d.assigned)){r.assigned=d.assigned;r.changedBy=d.changedBy||null;}
+  });
+  if(data.changeLog&&data.changeLog.length>0){
+    changeLog.push({time:"—",user:"sistema",text:`── Modifiche importate da "${data.savedBy||"?"}" ──`});
+    data.changeLog.forEach(e=>changeLog.push(e));
   }
-  renderTable();
+  renderLog();updateStats();updateChangesUI();render();
+  showToast(`✓ Sessione di "${data.savedBy||"Anonimo"}" caricata`,"green");
 }
 
-function applyFilters(){renderTable();}
-
-function toggleExport(){
-  const area=document.getElementById("export-area");
-  if(area.style.display==="block"){area.style.display="none";return;}
-  const lines=["Ragione Sociale,Valutazione,Responsabile"];
-  state.forEach(r=>lines.push(`"${r.name}",${r.val},${r.assigned}`));
-  document.getElementById("csv-out").value=lines.join("\n");
-  area.style.display="block";
+// ── MODALS ──
+function confirmReset(){document.getElementById("modal-reset").classList.add("open");}
+function closeModal(id){document.getElementById(id).classList.remove("open");}
+function doReset(){
+  state=INIT.map(r=>({...r,changedBy:null}));
+  closeModal("modal-reset");
+  changeLog.push({time:ts(),user:currentUser||"sistema",text:"↩ Distribuzione ripristinata all'originale automatico"});
+  renderLog();updateStats();updateChangesUI();render();
 }
 
-function copyCSV(){const ta=document.getElementById("csv-out");ta.select();document.execCommand("copy");alert("CSV copiato negli appunti.");}
-function confirmReset(){document.getElementById("modal-reset").classList.add("active");}
-function closeModal(){document.getElementById("modal-reset").classList.remove("active");}
-function doReset(){state=INITIAL.map(r=>({...r}));closeModal();updateStats();updateChangesUI();renderTable();}
+// ── TOAST ──
+let toastTimer=null;
+function showToast(msg,type=""){
+  const t=document.getElementById("toast");t.textContent=msg;t.className="toast"+(type?" "+type:"");
+  void t.offsetWidth;t.classList.add("show");
+  if(toastTimer)clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove("show"),2800);
+}
 
-updateStats();updateChangesUI();renderTable();
+// ── INIT ──
+updateStats();updateChangesUI();renderLog();render();
 </script>
 </body>
 </html>
