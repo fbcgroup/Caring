@@ -62,6 +62,8 @@ body{font-family:'Inter',Arial,sans-serif;font-size:13px;color:#0f172a;backgroun
 .btn-reset:hover{background:#fef2f2;}
 .btn-download{background:#0ea5e9;color:#fff;}
 .btn-download:hover{background:#0284c7;}
+.btn-csv{background:#16a34a;color:#fff;}
+.btn-csv:hover{background:#15803d;}
 .btn-load{background:#fff;color:#475569;border:1px solid #e2e8f0;}
 .btn-load:hover{border-color:#94a3b8;}
 .changes-lbl{font-size:11px;color:#f59e0b;font-weight:600;letter-spacing:.02em;}
@@ -221,6 +223,8 @@ tr.changed:hover td{background:#fef9c3 !important;}
     <button class="btn btn-download" onclick="downloadSession()">⬇ Scarica sessione</button>
     <button class="btn btn-load" onclick="document.getElementById('file-load-input').click()">⬆ Carica sessione</button>
     <input type="file" id="file-load-input" accept=".json" style="display:none" onchange="loadSession(event)">
+    <div style="width:1px;height:18px;background:#334155;margin:0 4px;flex-shrink:0;"></div>
+    <button class="btn btn-csv" onclick="downloadCSV()">📥 Esporta CSV · CRM</button>
     <button class="btn btn-reset" id="btn-reset" style="display:none" onclick="confirmReset()">↩ Ripristina</button>
     <span class="changes-lbl" id="changes-count" style="display:none"></span>
   </div>
@@ -512,6 +516,48 @@ function setValFilter(v){
   if(fVal!=="all"){const el=document.getElementById("f-v"+fVal);if(el)el.classList.add("act-v"+fVal);}render();}
 function onSearch(){fSearch=document.getElementById("search").value.toLowerCase();curPage=1;render();}
 function setPageSize(v){pageSize=parseInt(v);curPage=1;render();}
+
+// ── EXPORT CSV PER CRM ──
+function downloadCSV(){
+  const valLabel=v=>v==="3"?"Complesso":v==="2"?"Medio":"Standard";
+  const now=new Date();
+  const exported=now.toLocaleDateString("it-IT",{day:"2-digit",month:"2-digit",year:"numeric"});
+
+  // Header row — colonne standard CRM
+  const header=["Ragione Sociale","Responsabile Caring","Complessità","Data Esportazione","Modificato Manualmente","Modificato Da"];
+  const rows=[header];
+
+  state.forEach((r,i)=>{
+    const changed=r.assigned!==INIT[i].assigned;
+    const changedBy=changed?(r.changedBy||currentUser||""):"";
+    rows.push([
+      r.name,
+      r.assigned,
+      valLabel(r.val),
+      exported,
+      changed?"Sì":"No",
+      changedBy
+    ]);
+  });
+
+  // Build CSV string — valori quotati per sicurezza
+  const escape=v=>`"${String(v).replace(/"/g,'""')}"`;
+  const csv=rows.map(row=>row.map(escape).join(";")).join("\r\n");
+
+  // Aggiungi BOM UTF-8 per compatibilità Excel italiano
+  const bom="\uFEFF";
+  const blob=new Blob([bom+csv],{type:"text/csv;charset=utf-8;"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  const ds=now.toISOString().slice(0,10);
+  a.href=url;
+  a.download=`Portfolio_Caring_CRM_${ds}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(`✓ CSV esportato · ${state.length} clienti`,`green`);
+}
 
 // ── DOWNLOAD SESSION ──
 function downloadSession(){
